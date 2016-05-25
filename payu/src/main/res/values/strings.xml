@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">PayU</string>
+    <string name="payment_method">Choose Payment Method</string>
+    <string name="credit_card">Credit / Debit Card</string>
+    <string name="net_banking">Net Banking</string>
+    <string name="payu_money">PayU Money Wallet</string>
+    <string name="amount">Amount Payable</string>
+    <string name="select_option">Select Option</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="card_number">Card Number</string>
+    <string name="make_payment">Make Payment</string>
+    <string name="search">Search</string>
+</resources>

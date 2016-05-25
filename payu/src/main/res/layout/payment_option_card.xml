@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="60dp"
+    android:background="@drawable/border_bottom"
+    android:clickable="true"
+    android:foreground="?android:selectableItemBackground">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:paddingBottom="@dimen/md"
+        android:paddingLeft="@dimen/xs"
+        android:paddingTop="@dimen/md">
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="@dimen/xxlg"
+            android:layout_height="@dimen/xxlg"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/md"
+            android:src="@drawable/ic_credit_card" />
+
+        <TextView
+            android:id="@+id/textViewName"
+            android:textSize="14dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toEndOf="@+id/imageView"
+            android:layout_toRightOf="@+id/imageView"
+            android:text="@string/credit_card"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="@color/textColorPrimary" />
+
+    </RelativeLayout>
+</FrameLayout>
