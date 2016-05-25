@@ -1,7 +1,7 @@
 # payu
 
 <h4> PayU Money SDK & UI integration (beta) </h4>
-
+<p> A simple & Easiest way to integrate PayU Money Payment Gateway with your Android Application </p>
 <img src="https://dl.dropbox.com/s/prj2gv928sgjh8u/device-2016-05-25-032533.png" alt="PayU Money" width="33%">
 
 <h5>Step by step guide to integrate PayU Money SDK with your Android Application </h5>
