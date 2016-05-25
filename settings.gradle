@@ -1,1 +1,1 @@
-include ':app', ':payu', ':PayU-release'
+include ':app', ':payu'
