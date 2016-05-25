@@ -93,7 +93,7 @@ if (requestCode == PayuConstants.PAYU_REQUEST_CODE) {
 }
 </pre>
 </li>
-<li> Optionally you can alos configure Payment Methods to enable or disable by setting boolean value (true/false)
+<li> Optionally you can alos configure Payment Methods to enable or disable by setting boolean value (true/false) before calling <b> startActivityForResult </b>
 <pre>
 PaymentOptions.DebitCardEnabled = true;
 PaymentOptions.CreditCardEnabled = true;
