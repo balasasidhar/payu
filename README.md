@@ -26,7 +26,7 @@ dependencies {
 </li>
 <li> Add Internt Permissions in your Android Application Manifest file
 <pre>
-    &lg;uses-permission android:name="android.permission.INTERNET" /&gt;
+    &lt; uses-permission android:name="android.permission.INTERNET" /&gt;
 </pre>
 </li>
 <li> Create an object for <b> PayuConfig </b> Class and Configure your environement (test/dev) 
