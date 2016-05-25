@@ -24,5 +24,83 @@ dependencies {
 }
 </pre>
 </li>
-</ol>
+<li> Create an object for <b> PayuConfig </b> Class and Configure your environement (test/dev) 
+<pre>
+PayuConfig payuConfig = new PayuConfig();
 
+// for testing
+payuConfig.setEnvironment(PayuConstants.MOBILE_DEV_ENV);
+
+// for production 
+payuConfig.setEnvironment(PayuConstants.PRODUCTION_ENV);
+</pre>
+</li> Create an object for <b> PaymentParams </b> and obtain all the required parameters
+<li> 
+<pre>
+PaymentParams paymentParams = new PaymentParams();
+paymentParams.setKey("merchant_key"); // Get Merchant Key from PayU Money Merchant Account
+paymentParams.setFirstName("name"); // User Name
+paymentParams.setEmail("email"); // User Email Address
+paymentParams.setPhone("phone"); // User Mobile Number
+paymentParams.setProductInfo("productinfo"); // Product info
+paymentParams.setAmount("amount"); // Amout 
+paymentParams.setTxnId(""); // Transaction ID
+paymentParams.setSurl("SURL"); // Success URL
+paymentParams.setFurl("FURL"); // Failure URL
+
+// User defined fields are optional (pass empty string)
+
+paymentParams.setUdf1(""); 
+paymentParams.setUdf2("");
+paymentParams.setUdf3("");
+paymentParams.setUdf4("");
+paymentParams.setUdf5("");
+
+</pre>
+</li>
+<li> Generate <b> HASH </b>  by with PaymentParams object & SALT and add it to PaymentParams object.
+<pre>
+PayuHashes payuHashes = Utils.generateHashFromSDK(paymentParams, "SALT"); // Get SALT from PayU Money Merchant Account
+paymentParams.setHash(payuHashes.getPaymentHash());
+</pre>
+<p style="color: #F44336"> Note: It is recommanded to generate <b> HASH </b> from your own server instea of here.</p>
+</li>
+<li>Create an Intent to a <b> PaymentActivity </b> and pass PayuConfig, PaymentParams and PayuHashes objects that we are create in the above steps as intent extras.
+<pre>
+Intent intent = new Intent(this, PaymentActivity.class);
+intent.putExtra(PayuConstants.PAYU_CONFIG, payuConfig);
+intent.putExtra(PayuConstants.PAYMENT_PARAMS, paymentParams);
+intent.putExtra(PayuConstants.PAYU_HASHES, payuHashes);
+</pre>
+</li>
+<li> Start Activity for Result
+<pre>
+startActivityForResult(intent, PayuConstants.PAYU_REQUEST_CODE);
+</pre>
+</li>
+<li> Handle response at onActivityResult
+<pre>
+if (requestCode == PayuConstants.PAYU_REQUEST_CODE) {
+    switch (resultCode) {
+        case RESULT_OK:
+            Toast.makeText(MainActivity.this, "Payment Success.", Toast.LENGTH_SHORT).show();
+            break;
+
+        case RESULT_CANCELED:
+            Toast.makeText(MainActivity.this, "Payment Cancelled | Failed.", Toast.LENGTH_SHORT).show();
+            break;
+    }
+}
+</pre>
+</li>
+<li> Optionally you can alos configure Payment Methods to enable or disable by setting boolean value (true/false)
+<pre>
+PaymentOptions.DebitCardEnabled = true;
+PaymentOptions.CreditCardEnabled = true;
+PaymentOptions.isNetBankingEnabled = true;
+PaymentOptions.isEMIEnabled = false;
+PaymentOptions.isPayUMoneyWalletEnabled = true;
+PaymentOptions.isCashCardEnabled = false;
+</pre>
+</li>
+</ol>
