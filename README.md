@@ -6,22 +6,23 @@
 
 <h5>Step by step guide to integrate PayU Money SDK with your Android Application </h5>
 <ol>
-    <li> Add Maven repository and compile dependency in <b> build.gradle </b> file.
-        <pre>
-        apply plugin: 'com.android.application'
-    
-        android {
-            repositories {
-                maven {
-                    url  "http://dl.bintray.com/sasidhar-678/maven"
-                }
-            }
+
+<li> Add Maven repository and compile dependency in <b> build.gradle </b> file.
+<pre>
+apply plugin: 'com.android.application'
+
+android {
+    repositories {
+        maven {
+            url  "http://dl.bintray.com/sasidhar-678/maven"
         }
-        
-        dependencies {
-            compile 'com.sasidhar.smaps.payu:payu:0.0.3'
-        }
-        </pre>
-    </li>
+    }
+}
+
+dependencies {
+    compile 'com.sasidhar.smaps.payu:payu:0.0.3'
+}
+</pre>
+</li>
 </ol>
 
