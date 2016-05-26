@@ -9,16 +9,6 @@
 
 <li> Add Maven repository and compile dependency in <b> build.gradle </b> file.
 <pre>
-apply plugin: 'com.android.application'
-
-android {
-    repositories {
-        maven {
-            url  "http://dl.bintray.com/sasidhar-678/maven"
-        }
-    }
-}
-
 dependencies {
     compile 'com.sasidhar.smaps.payu:payu:0.0.3'
 }
@@ -26,7 +16,7 @@ dependencies {
 </li>
 <li> Add Internt Permissions in your Android Application Manifest file
 <pre>
-    &lt; uses-permission android:name="android.permission.INTERNET" /&gt;
+    &lt;uses-permission android:name="android.permission.INTERNET" /&gt;
 </pre>
 </li>
 <li> Create an object for <b> PayuConfig </b> Class and Configure your environement (test/dev) 
