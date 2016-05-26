@@ -4,7 +4,7 @@
 <p> A simple & Easiest way to integrate PayU Biz Payment Gateway with your Android Application </p>
 <img src="https://dl.dropbox.com/s/prj2gv928sgjh8u/device-2016-05-25-032533.png" alt="PayU Money" width="33%">
 
-<h5>Step by step guide to integrate PayU Money SDK with your Android Application </h5>
+<h5>Step by step guide to integrate PayU Biz SDK with your Android Application </h5>
 <ol>
 
 <li> Add Maven repository and compile dependency in <b> build.gradle </b> file.
@@ -33,7 +33,7 @@ payuConfig.setEnvironment(PayuConstants.PRODUCTION_ENV);
 <li> 
 <pre>
 PaymentParams paymentParams = new PaymentParams();
-paymentParams.setKey("merchant_key"); // Get Merchant Key from PayU Money Merchant Account
+paymentParams.setKey("merchant_key"); // Get Merchant Key from PayU Biz Merchant Account
 paymentParams.setFirstName("name"); // User Name
 paymentParams.setEmail("email"); // User Email Address
 paymentParams.setPhone("phone"); // User Mobile Number
@@ -55,7 +55,7 @@ paymentParams.setUdf5("");
 </li>
 <li> Generate <b> HASH </b>  by with PaymentParams object & SALT and add it to PaymentParams object.
 <pre>
-PayuHashes payuHashes = Utils.generateHashFromSDK(paymentParams, "SALT"); // Get SALT from PayU Money Merchant Account
+PayuHashes payuHashes = Utils.generateHashFromSDK(paymentParams, "SALT"); // Get SALT from PayU Biz Merchant Account
 paymentParams.setHash(payuHashes.getPaymentHash());
 </pre>
 <p style="color: #F44336"> Note: It is recommanded to generate <b> HASH </b> from your own server instea of here.</p>
