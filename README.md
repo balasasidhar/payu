@@ -10,7 +10,7 @@
 <li> Add Maven repository and compile dependency in <b> build.gradle </b> file.
 <pre>
 dependencies {
-    compile 'com.sasidhar.smaps.payu:payu:0.0.3'
+    compile 'com.sasidhar.smaps.payu:payu:0.0.5'
 }
 </pre>
 </li>
