@@ -213,6 +213,8 @@ public class PaymentActivity extends AppCompatActivity implements PaymentOptions
             }
 
             createPaymentOptions();
+        } else {
+            Toast.makeText(this, "SOME THING WENT WRONG : " + payuResponse.getResponseStatus(), Toast.LENGTH_SHORT).show();
         }
     }
 
