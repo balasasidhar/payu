@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/PayUMoney.iml" filepath="$PROJECT_DIR$/PayUMoney.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/payu/payu.iml" filepath="$PROJECT_DIR$/payu/payu.iml" />
+      <module fileurl="file://$PROJECT_DIR$/payu.iml" filepath="$PROJECT_DIR$/payu.iml" />
+      <module fileurl="file://$PROJECT_DIR$/payu/payu-payu.iml" filepath="$PROJECT_DIR$/payu/payu-payu.iml" />
     </modules>
   </component>
 </project>
