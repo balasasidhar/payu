@@ -7,11 +7,23 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
+
+import com.payu.india.Model.PaymentParams;
+import com.payu.india.Model.PayuConfig;
+import com.payu.india.Model.PayuHashes;
+import com.payu.india.Payu.PayuConstants;
+import com.sasidhar.smaps.payu.PaymentActivity;
+import com.sasidhar.smaps.payu.PaymentOptions;
+import com.sasidhar.smaps.payu.Utils;
 
 import java.math.BigDecimal;
 import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+
+    private PaymentParams paymentParams = new PaymentParams();
+    private PayuConfig payuConfig = new PayuConfig();
 
     private TextInputEditText inputEditTextName, inputEditTextEmail, inputEditTextMobile,
             inputEditTextProduct, inputEditTextAmount;
@@ -35,6 +47,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         inputEditTextProduct.setText("Pen");
         inputEditTextAmount.setText("10");
 
+        payuConfig.setEnvironment(Constants.ENV);
 
         Button button = (Button) findViewById(R.id.buttonContinue);
         assert button != null;
@@ -64,12 +77,47 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             double _amount = Double.parseDouble(amount);
             amount = String.format(Locale.getDefault(), "%.2f", new BigDecimal(_amount));
 
+            paymentParams.setKey(Constants.MERCHANT_KEY);
+            paymentParams.setFirstName(name);
+            paymentParams.setEmail(email);
+            paymentParams.setPhone(mobile);
+            paymentParams.setProductInfo(product);
+            paymentParams.setAmount(amount);
+            paymentParams.setTxnId("" + System.currentTimeMillis());
+            paymentParams.setSurl(Constants.SURL);
+            paymentParams.setFurl(Constants.FURL);
+            paymentParams.setUdf1("");
+            paymentParams.setUdf2("");
+            paymentParams.setUdf3("");
+            paymentParams.setUdf4("");
+            paymentParams.setUdf5("");
 
+            PayuHashes payuHashes = Utils.generateHashFromSDK(paymentParams, Constants.SALT);
+            paymentParams.setHash(payuHashes.getPaymentHash());
+
+            PaymentOptions.isEMIEnabled = false;
+
+            Intent intent = new Intent(this, PaymentActivity.class);
+            intent.putExtra(PayuConstants.PAYU_CONFIG, payuConfig);
+            intent.putExtra(PayuConstants.PAYMENT_PARAMS, paymentParams);
+            intent.putExtra(PayuConstants.PAYU_HASHES, payuHashes);
+
+            startActivityForResult(intent, PayuConstants.PAYU_REQUEST_CODE);
         }
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == PayuConstants.PAYU_REQUEST_CODE) {
+            switch (resultCode) {
+                case RESULT_OK:
+                    Toast.makeText(MainActivity.this, "Payment Success.", Toast.LENGTH_SHORT).show();
+                    break;
 
+                case RESULT_CANCELED:
+                    Toast.makeText(MainActivity.this, "Payment Cancelled | Failed.", Toast.LENGTH_SHORT).show();
+                    break;
+            }
+        }
     }
 }
